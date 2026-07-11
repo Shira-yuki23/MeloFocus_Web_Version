@@ -1,11 +1,348 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Moonspell</title>
-        <link rel="stylesheet" href="style.css"/>
-    </head>
-    <body>
 
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MeloFocus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating Background -->
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <!-- Header -->
+
+    <header>
+
+        <h1>MeloFocus 🌸</h1>
+
+        <div id="currentTime">
+            00:00:00
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ===================== -->
+        <!-- LEFT PANEL -->
+        <!-- ===================== -->
+
+        <aside class="left-panel">
+
+            <h2>Tasks</h2>
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter Task">
+
+            <input
+                type="number"
+                id="rewardInput"
+                placeholder="Reward Minutes">
+
+            <div class="task-buttons">
+
+                <button id="addTaskBtn">
+                    Add Task
+                </button>
+
+                <button id="deleteTaskBtn">
+                    Delete
+                </button>
+
+            </div>
+
+            <ul id="taskList">
+
+            </ul>
+
+        </aside>
+
+
+
+        <!-- ===================== -->
+        <!-- TIMER -->
+        <!-- ===================== -->
+
+        <section class="timer-panel">
+
+            <h2 id="modeLabel">
+                FOCUS MODE
+            </h2>
+
+
+            <div class="timer-circle">
+
+                <svg width="260" height="260">
+
+                    <circle
+                        cx="130"
+                        cy="130"
+                        r="110"
+                        class="bg-circle">
+                    </circle>
+
+                    <circle
+                        cx="130"
+                        cy="130"
+                        r="110"
+                        class="progress-circle"
+                        id="progressCircle">
+                    </circle>
+
+                </svg>
+
+                <div class="timer-text"
+                    id="timer">
+
+                    25:00
+
+                </div>
+
+            </div>
+
+
+
+            <div class="timer-buttons">
+
+                <button id="startBtn">
+                    ▶ Start
+                </button>
+
+                <button id="pauseBtn">
+                    ⏸ Pause
+                </button>
+
+                <button id="resetBtn">
+                    ↺ Reset
+                </button>
+
+            </div>
+
+
+
+            <div class="settings">
+
+                <div class="setting-box">
+
+                    <label>
+
+                        Focus
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="focusMinutes"
+                        value="25"
+                        min="1"
+                        max="300">
+
+                </div>
+
+                <div class="setting-box">
+
+                    <label>
+
+                        Break
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="breakMinutes"
+                        value="5"
+                        min="1"
+                        max="120">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stats">
+
+                <div class="card">
+
+                    <h3>
+
+                        Session
+
+                    </h3>
+
+                    <p id="sessionCount">
+
+                        #1
+
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+
+                        Break Bank
+
+                    </h3>
+
+                    <p id="breakBank">
+
+                        0 min
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="redeemBtn"
+                class="redeem">
+
+                🏦 Redeem Break
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================== -->
+    <!-- BREAK POPUP -->
+    <!-- ========================== -->
+
+    <div
+        id="popupOverlay"
+        class="hidden">
+
+        <div class="popup">
+
+            <h2>
+
+                🌸 Session Complete
+
+            </h2>
+
+            <p>
+
+                Would you like to take a break?
+
+            </p>
+
+            <div class="popup-buttons">
+
+                <button
+                    id="takeBreak">
+
+                    Yes
+
+                </button>
+
+                <button
+                    id="skipBreak">
+
+                    Skip & Earn
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================== -->
+    <!-- REDEEM POPUP -->
+    <!-- ========================== -->
+
+    <div
+        id="redeemOverlay"
+        class="hidden">
+
+        <div class="popup">
+
+            <h2>
+
+                Redeem Break 🌸
+
+            </h2>
+
+            <p>
+
+                How many minutes?
+
+            </p>
+
+            <input
+                type="number"
+                id="redeemMinutes"
+                value="5"
+                min="1">
+
+            <div class="popup-buttons">
+
+                <button
+                    id="confirmRedeem">
+
+                    Start Break
+
+                </button>
+
+                <button
+                    id="cancelRedeem">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================== -->
+    <!-- FOOTER -->
+    <!-- ========================== -->
+
+    <footer>
+
+        Made with ❤️ by Shira-yuki23
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>
