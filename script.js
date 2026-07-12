@@ -153,12 +153,27 @@ function timerFinished(){
         sessionCount++;
         sessionLabel.textContent =
             "#" + sessionCount;
+
+        showNotification(
+            "🌸 MeloFocus",
+            "Focus session complete! Time for a break."
+        );
+
         showBreakPopup();
     }
     else{
         isBreak = false;
         modeLabel.textContent =
             "FOCUS MODE 🌸";
+    
+        showNotification(
+            "☕ MeloFocus",
+            "Break is over! Let's get back to focusing."
+        );
+        isBreak = false;
+        modeLabel.textContent =
+            "FOCUS MODE 🌸";
+
         resetTimer();
     }
 }
@@ -564,3 +579,36 @@ document.addEventListener(
         }
     }
 );
+/* ===============================
+   Notification Permission
+================================ */
+
+if ("Notification" in window) {
+
+    if (Notification.permission !== "granted") {
+
+        Notification.requestPermission();
+
+    }
+
+}
+function showNotification(title, message) {
+
+    if (!("Notification" in window))
+        return;
+
+    if (Notification.permission === "granted") {
+
+        new Notification(title, {
+            body: message,
+            icon: "icon64.png" // Optional
+        });
+
+    }
+
+}
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js");
+    });
+}
